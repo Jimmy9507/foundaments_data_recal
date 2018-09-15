@@ -1,0 +1,36 @@
+---
+data:
+  source:
+    host: 192.168.200.7
+    port: 3306
+    user: root
+    password: root
+    database: pgenius
+  dest:
+    host: localhost
+    port: 3306
+    user: root
+    password: root
+    database: fundamentals
+
+instruments:
+  - /etc/rq/hd/Instruments/latest/china/XSHE_Instruments.csv
+  - /etc/rq/hd/Instruments/latest/china/XSHG_Instruments.csv
+
+
+# Function: re-handle genius modified data.
+# Background: Genius may modify data and record the modifying time as "mtime".
+#             If Genius' data is modified, our handled data should be
+#             rehandled again.
+# Rehandle Mechanism: rehandle the modified data which is in timeslot before
+#              current time
+update:
+  # day unit.
+  # if this value is non-negative integer, then update all the records whose
+  # mtime happended during latest timeslot number of days. For example,
+  # timeslot is 1, then update all the records which was updated from yesterday
+  # to now.
+  # If it is negative integer, then update all records in four quarter-level
+  # tables.
+  # Note: If it is firstly create fundamentals, this field has no any effect.
+  timeslot: -1

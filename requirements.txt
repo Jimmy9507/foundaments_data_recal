@@ -1,0 +1,7 @@
+sqlbuilder==0.7.9.44
+pandas
+numpy
+six
+python-dateutil
+pyyaml
+typing

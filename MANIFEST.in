@@ -1,0 +1,3 @@
+include requirements.txt
+include fdhandle/sql/*.sql
+include fdhandle.yaml
